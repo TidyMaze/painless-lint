@@ -10,6 +10,14 @@ clone the repo
     
     git clone git@github.com:TidyMaze/painless-lint.git
 
+install maven
+
+    // debian / ubuntu
+    apt install maven
+    
+    // mac
+    brew install maven
+
 build the tool
 
     cd painless-lint
