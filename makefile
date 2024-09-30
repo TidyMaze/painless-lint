@@ -4,7 +4,7 @@ PHONY: all get-grammar keep-grammar generate patch build clean
 ANTLR_VERSION=4.13.2
 
 # Main target: clone repo and copy the antlr folder
-all: clean get-grammar keep-grammar generate patch build
+all: clean get-grammar keep-grammar generate build
 
 # Get the painless grammar
 get-grammar:
@@ -22,6 +22,7 @@ generate:
 	mvn antlr4:antlr4
 
 # Patch the generated source files, lexer does not implement the isSlashRegex
+# This is called by maven
 patch:
 	sed -i '' "s/public class PainlessLexer/public abstract class PainlessLexer/" target/generated-sources/antlr4/com/iadvize/PainlessLexer.java
 

@@ -24,6 +24,7 @@
     
     <build>
         <plugins>
+            <!-- ANTLR4 plugin -->
             <plugin>
                 <groupId>org.antlr</groupId>
                 <artifactId>antlr4-maven-plugin</artifactId>
@@ -34,6 +35,29 @@
                         <goals>
                             <goal>antlr4</goal>
                         </goals>
+                        <phase>generate-sources</phase>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Additional plugin to patch the lexer -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>patch lexer</id>
+                        <!-- Executes after ANTLR in the same phase -->
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>make</executable>
+                            <arguments>
+                                <argument>patch</argument>
+                            </arguments>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
