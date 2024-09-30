@@ -4,7 +4,7 @@ PHONY: all get-grammar keep-grammar generate patch build clean
 ANTLR_VERSION=4.13.2
 
 # Main target: clone repo and copy the antlr folder
-all: clean get-grammar keep-grammar generate build
+all: clean get-grammar keep-grammar generate build check-package
 
 # Get the painless grammar
 get-grammar:
@@ -33,3 +33,6 @@ clean:
 	rm -rf elasticsearch
 	rm -rf src/main/antlr4
 	mvn clean
+
+check-package:
+	java -jar ./target/painless-lint-mvn-1.0-SNAPSHOT-jar-with-dependencies.jar
