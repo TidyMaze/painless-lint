@@ -28,6 +28,7 @@ build:
 clean:
 	rm -rf elasticsearch
 	rm -rf src/main/antlr4
+	rm -rf gen
 	mvn clean
 
 check-package:
