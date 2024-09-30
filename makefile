@@ -31,4 +31,4 @@ clean:
 	mvn clean
 
 check-package:
-	java -jar ./target/painless-lint-mvn-1.0-SNAPSHOT-jar-with-dependencies.jar
+	java -jar ./target/painless-lint-mvn-1.0-SNAPSHOT-jar-with-dependencies.jar ./samples/test1.painless
