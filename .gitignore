@@ -36,7 +36,7 @@ build/
 
 ### Mac OS ###
 .DS_Store
-/.idea/
+.idea/
 src/main/antlr4
 gen
 elasticsearch
