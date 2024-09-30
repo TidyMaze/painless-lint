@@ -109,8 +109,9 @@ public class PainlessLinter {
         // use the parser
         try {
             PainlessParser.SourceContext source = parser.source();
+            String tree = source.toStringTree(parser);
             if (verbose) {
-                System.out.printf("Parsed successfully: %s%n", source.toStringTree(parser));
+                System.out.printf("Parsed successfully: %s%n", tree);
             }
             System.out.println("Painless code is valid! 🎉");
         } catch (Exception e) {
