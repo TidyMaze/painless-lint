@@ -39,3 +39,4 @@ build/
 /.idea/
 src/main/antlr4
 gen
+elasticsearch
