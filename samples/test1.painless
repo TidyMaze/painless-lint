@@ -1,0 +1,2 @@
+// this is not proper java, but it is a valid painless script
+ctx._source.last = ctx._source.last.replaceFirst(/[aeiou]/, m -> m.group().toUpperCase(Locale.ROOT));
