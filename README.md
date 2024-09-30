@@ -1,7 +1,7 @@
 # painless-lint
 
 A very basic linter for Painless scripts (Elasticsearch scripting language).
-It uses the official [Elasticsearch Painless grammar](https://github.com/elastic/elasticsearch/blob/main/modules/lang-painless/src/main/antlr/PainlessParser.g4) and [ANTLR4](https://www.antlr.org/). 
+It uses the official [Elasticsearch Painless grammar](https://github.com/elastic/elasticsearch/blob/main/modules/lang-painless/src/main/antlr/PainlessParser.g4) and [ANTLR4](https://www.antlr.org/) to generate a JVM based linter. 
 Returns a non-zero exit code if any errors are found.
 
 ## Usage
