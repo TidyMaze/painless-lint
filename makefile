@@ -1,4 +1,4 @@
-PHONY: all get-grammar keep-grammar patch build clean
+PHONY: all get-grammar keep-grammar patch build clean check-package
 
 # Define repository URL and paths
 ANTLR_VERSION=4.13.2
