@@ -72,8 +72,14 @@ class PainlessLexerImpl extends PainlessLexer {
 
 public class PainlessLinter {
     public static void main(String[] args) throws Exception {
-        // The input string to be parsed, from the file painless-test-code/test1.painless
-        File file = new File("painless-test-code/test1.painless");
+        String fileArg = args[0];
+        
+        if (fileArg == null) {
+            System.out.println("Please provide a file path as argument");
+            return;
+        }
+        
+        File file = new File(fileArg);
         String input = new String(Files.readAllBytes(file.toPath()));
 
         System.out.println("Input: " + input);
