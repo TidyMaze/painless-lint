@@ -131,22 +131,22 @@ public class PainlessLinter {
         parser.addErrorListener(new ANTLRErrorListener() {
             @Override
             public void syntaxError(Recognizer<?, ?> recognizer, Object o, int i, int i1, String s, RecognitionException e) {
-                System.out.println("Syntax error: " + s);
+                throw new IllegalArgumentException(String.format("Syntax error at %d:%d due to %s", i, i1, s), e);
             }
 
             @Override
             public void reportAmbiguity(Parser parser, DFA dfa, int i, int i1, boolean b, BitSet bitSet, ATNConfigSet atnConfigSet) {
-                System.out.println("Ambiguity: " + i + " " + i1);
+                throw new IllegalArgumentException(String.format("Ambiguity at %d:%d", i, i1));
             }
 
             @Override
             public void reportAttemptingFullContext(Parser parser, DFA dfa, int i, int i1, BitSet bitSet, ATNConfigSet atnConfigSet) {
-                System.out.println("Attempting full context: " + i + " " + i1);
+                throw new IllegalArgumentException(String.format("Attempting full context at %d:%d", i, i1));
             }
 
             @Override
             public void reportContextSensitivity(Parser parser, DFA dfa, int i, int i1, int i2, ATNConfigSet atnConfigSet) {
-                System.out.println("Context sensitivity: " + i + " " + i1);
+                throw new IllegalArgumentException(String.format("Context sensitivity at %d:%d", i, i1));
             }
         });
         return parser;
