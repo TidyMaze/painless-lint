@@ -1,10 +1,10 @@
-PHONY: all get-grammar keep-grammar generate patch build clean
+PHONY: all get-grammar keep-grammar patch build clean
 
 # Define repository URL and paths
 ANTLR_VERSION=4.13.2
 
 # Main target: clone repo and copy the antlr folder
-all: clean get-grammar keep-grammar generate build check-package
+all: clean get-grammar keep-grammar build check-package
 
 # Get the painless grammar
 get-grammar:
@@ -16,10 +16,6 @@ keep-grammar:
 	mkdir -p src/main/antlr4/com/iadvize
 	cp -r elasticsearch/modules/lang-painless/src/main/antlr/PainlessLexer.g4 elasticsearch/modules/lang-painless/src/main/antlr/PainlessParser.g4 src/main/antlr4/com/iadvize
 	rm -rf elasticsearch
-
-# Generate source files from the grammar
-generate:
-	mvn antlr4:antlr4
 
 # Patch the generated source files, lexer does not implement the isSlashRegex
 # This is called by maven
