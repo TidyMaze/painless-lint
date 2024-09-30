@@ -92,7 +92,10 @@ public class PainlessLinter {
         File file = new File(fileArg);
         String input = new String(Files.readAllBytes(file.toPath()));
 
-        System.out.println("Input: " + input);
+        if (verbose) {
+            System.out.printf("Reading file: %s%n", file.getName());
+            System.out.printf("Input: %s%n", input);
+        }
 
         // Create an input stream from the input string
         CharStream charStream = CharStreams.fromString(input);
