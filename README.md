@@ -8,23 +8,47 @@ Returns a non-zero exit code if any errors are found.
 
 clone the repo
     
-    git clone git@github.com:TidyMaze/painless-lint.git
+```shell
+git clone git@github.com:TidyMaze/painless-lint.git
+```
 
 install maven
 
-    // debian / ubuntu
-    apt install maven
-    
-    // mac
-    brew install maven
+```shell
+apt install maven # debian / ubuntu
+````
+
+```shell
+brew install maven
+```
 
 build the tool
 
-    cd painless-lint
-    make all
+```shell
+cd painless-lint
+make all
+```
 
 run the tool
 
-    java -jar ./target/painless-lint-mvn-1.0-SNAPSHOT-jar-with-dependencies.jar ./samples/test1.painless
+```shell
+java -jar ./target/painless-lint-mvn-1.0-SNAPSHOT-jar-with-dependencies.jar ./samples/test1.painless
+```
 
-more details on the makefile
+More details on the makefile
+
+## FAQ
+
+### Why did you create this tool?
+
+Painless scripts have currently (as of 2024) no linter available. It makes it hard to catch errors early on.
+
+## License
+
+I don't know yet. Let me know if you want to use this tool and I will figure it out.
+
+## Troubleshooting
+
+### Errors in IDE (PainlessLexer, PainlessParser not found)
+
+Make sure to run `make all` to generate the necessary files.
