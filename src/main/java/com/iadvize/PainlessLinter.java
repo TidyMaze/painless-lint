@@ -12,7 +12,7 @@ import java.util.BitSet;
 class PainlessLexerImpl extends PainlessLexer {
     // adapted from https://github.com/elastic/elasticsearch/blob/main/modules/lang-painless/src/main/java/org/elasticsearch/painless/antlr/EnhancedPainlessLexer.java#L29
     // in order to implement the isSlashRegex method required by the lexer (@members of PainlessLexer.g4)
-    
+
     private final String sourceName;
     private Token current = null;
 
@@ -73,17 +73,27 @@ class PainlessLexerImpl extends PainlessLexer {
 public class PainlessLinter {
     public static void main(String[] args) throws Exception {
         String fileArg = args[0];
-        
+
         if (fileArg == null) {
             System.out.println("Please provide a file path as argument");
             return;
         }
-        
+
+        boolean verbose = false;
+
+        // find if any verbose flag is provided
+        for (String arg : args) {
+            if (arg.equals("-v")) {
+                verbose = true;
+                break;
+            }
+        }
+
         File file = new File(fileArg);
         String input = new String(Files.readAllBytes(file.toPath()));
 
         System.out.println("Input: " + input);
-        
+
         // Create an input stream from the input string
         CharStream charStream = CharStreams.fromString(input);
 
@@ -94,15 +104,17 @@ public class PainlessLinter {
         PainlessParser parser = getParser(lexer);
 
         // use the parser
-        
         try {
             PainlessParser.SourceContext source = parser.source();
-            System.out.println("Parsed successfully: " + source.toStringTree(parser));
+            if (verbose) {
+                System.out.printf("Parsed successfully: %s%n", source.toStringTree(parser));
+            }
+            System.out.println("Painless code is valid! 🎉");
         } catch (Exception e) {
-            System.out.println("Error when parsing painless code: " + e.getMessage());
+            System.out.printf("Error when parsing painless code: %s%n ❌%n", e.getMessage());
         }
 
-        
+
     }
 
     private static PainlessParser getParser(PainlessLexer lexer) {
