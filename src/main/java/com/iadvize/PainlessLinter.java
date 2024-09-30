@@ -116,9 +116,8 @@ public class PainlessLinter {
             System.out.println("Painless code is valid! 🎉");
         } catch (Exception e) {
             System.out.printf("Error when parsing painless code: %s%n ❌%n", e.getMessage());
+            System.exit(1);
         }
-
-
     }
 
     private static PainlessParser getParser(PainlessLexer lexer) {
