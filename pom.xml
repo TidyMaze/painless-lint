@@ -81,6 +81,7 @@
                             <descriptorRefs>
                                 <descriptorRef>jar-with-dependencies</descriptorRef>
                             </descriptorRefs>
+                            <finalName>painless-lint</finalName>
                         </configuration>
                     </execution>
                 </executions>

@@ -32,7 +32,7 @@ make all
 run the tool
 
 ```shell
-java -jar ./target/painless-lint-mvn-1.0-SNAPSHOT-jar-with-dependencies.jar ./samples/test1.painless
+java -jar ./target/painless-lint-jar-with-dependencies.jar ./samples/test1.painless
 ```
 
 More details on the makefile
