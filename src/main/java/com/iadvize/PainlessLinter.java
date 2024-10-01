@@ -72,13 +72,13 @@ class PainlessLexerImpl extends PainlessLexer {
 
 public class PainlessLinter {
     public static void main(String[] args) throws Exception {
-        String fileArg = args[0];
-
-        if (fileArg == null) {
+        if (args.length == 0 || args[0] == null || args[0].equals("-v")) {
             System.out.println("Please provide a file path as argument");
             return;
         }
-
+        
+        String fileArg = args[0];
+        
         boolean verbose = false;
 
         // find if any verbose flag is provided
