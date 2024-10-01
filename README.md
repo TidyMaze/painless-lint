@@ -6,6 +6,7 @@ Returns a non-zero exit code if any errors are found.
 
 ## Usage
 
+### Get the tool via sources
 clone the repo
     
 ```shell
@@ -29,7 +30,20 @@ cd painless-lint
 make all
 ```
 
-run the tool
+### Or get from release
+
+```shell
+PAINLESS_LINTER_JAR=./painless-lint.jar
+PAINLESS_LINTER_VERSION = 0.0.1
+
+painless-lint:
+	@echo "Linting painless scripts..."
+	@echo "Downloading painless-lint..."
+	wget https://github.com/TidyMaze/painless-lint/releases/download/$(PAINLESS_LINTER_VERSION)/painless-lint-jar-with-dependencies.jar -O $(PAINLESS_LINTER_JAR)
+	ls painless/*.painless | xargs -I {} java -jar $(PAINLESS_LINTER_JAR) {}
+```
+
+### run the tool
 
 ```shell
 java -jar ./target/painless-lint-jar-with-dependencies.jar ./samples/test1.painless
