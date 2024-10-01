@@ -34,13 +34,10 @@ make all
 
 ```shell
 PAINLESS_LINTER_JAR=./painless-lint.jar
-PAINLESS_LINTER_VERSION = 0.0.1
+PAINLESS_LINTER_VERSION=0.0.1
 
-painless-lint:
-	@echo "Linting painless scripts..."
-	@echo "Downloading painless-lint..."
-	wget https://github.com/TidyMaze/painless-lint/releases/download/$(PAINLESS_LINTER_VERSION)/painless-lint-jar-with-dependencies.jar -O $(PAINLESS_LINTER_JAR)
-	ls painless/*.painless | xargs -I {} java -jar $(PAINLESS_LINTER_JAR) {}
+wget https://github.com/TidyMaze/painless-lint/releases/download/$(PAINLESS_LINTER_VERSION)/painless-lint-jar-with-dependencies.jar -O $(PAINLESS_LINTER_JAR)
+ls painless/*.painless | xargs -I {} java -jar $(PAINLESS_LINTER_JAR) {}
 ```
 
 ### run the tool
