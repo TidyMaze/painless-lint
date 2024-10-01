@@ -6,7 +6,15 @@ Returns a non-zero exit code if any errors are found.
 
 ## Usage
 
-### Get the tool via sources
+### Get from release
+
+```shell
+PAINLESS_LINTER_VERSION=0.0.1
+
+wget https://github.com/TidyMaze/painless-lint/releases/download/$PAINLESS_LINTER_VERSION/painless-lint-jar-with-dependencies.jar -O ./painless-lint.jar
+```
+
+### Or get the tool via sources
 clone the repo
     
 ```shell
@@ -32,13 +40,7 @@ make all
 
 jar will be in `./target/painless-lint-jar-with-dependencies.jar`
 
-### Or get from release
-
-```shell
-PAINLESS_LINTER_VERSION=0.0.1
-
-wget https://github.com/TidyMaze/painless-lint/releases/download/$PAINLESS_LINTER_VERSION/painless-lint-jar-with-dependencies.jar -O ./painless-lint.jar
-```
+More details on the makefile
 
 ### run the tool
 
@@ -51,8 +53,6 @@ java -jar ./painless-lint.jar ./samples/test1.painless
 ```shell
 ls samples/*.painless | xargs -I {} java -jar ./painless-lint.jar {}
 ```
-
-More details on the makefile
 
 ## FAQ
 
