@@ -103,8 +103,8 @@ public class PainlessLinter {
         String extension = file.getName().substring(file.getName().lastIndexOf('.'));
         
         if (!allowedExtensions.contains(extension)) {
-            System.out.printf("File %s is not a painless file. Please provide a file with .painless or .p extension ❌%n", file.getPath());
-            System.exit(1);
+            System.out.printf("File %s is not a painless file (.painless or .p extension only), skipping ❌%n", file.getPath());
+            System.exit(0);
         }
         
         String input = new String(Files.readAllBytes(file.toPath()));
