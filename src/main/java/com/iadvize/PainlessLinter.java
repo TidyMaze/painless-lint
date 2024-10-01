@@ -92,7 +92,7 @@ public class PainlessLinter {
         File file = new File(fileArg);
         String input = new String(Files.readAllBytes(file.toPath()));
 
-        System.out.printf("Reading file: %s at %s%n", file.getName(), file.getAbsolutePath());
+        System.out.printf("Reading file: %s at %s%n", file.getName(), file.getPath());
         
         if (verbose) {
             System.out.printf("Input: %s%n", input);
