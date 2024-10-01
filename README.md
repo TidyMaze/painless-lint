@@ -30,20 +30,26 @@ cd painless-lint
 make all
 ```
 
+jar will be in `./target/painless-lint-jar-with-dependencies.jar`
+
 ### Or get from release
 
 ```shell
-PAINLESS_LINTER_JAR=./painless-lint.jar
 PAINLESS_LINTER_VERSION=0.0.1
 
-wget https://github.com/TidyMaze/painless-lint/releases/download/$(PAINLESS_LINTER_VERSION)/painless-lint-jar-with-dependencies.jar -O $(PAINLESS_LINTER_JAR)
-ls painless/*.painless | xargs -I {} java -jar $(PAINLESS_LINTER_JAR) {}
+wget https://github.com/TidyMaze/painless-lint/releases/download/$PAINLESS_LINTER_VERSION/painless-lint-jar-with-dependencies.jar -O ./painless-lint.jar
 ```
 
 ### run the tool
 
 ```shell
-java -jar ./target/painless-lint-jar-with-dependencies.jar ./samples/test1.painless
+java -jar ./painless-lint.jar ./samples/test1.painless
+```
+
+### run the tool on multiple files
+
+```shell
+ls samples/*.painless | xargs -I {} java -jar ./painless-lint.jar {}
 ```
 
 More details on the makefile
