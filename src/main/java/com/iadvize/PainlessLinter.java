@@ -7,7 +7,9 @@ import org.antlr.v4.runtime.misc.Interval;
 
 import java.io.File;
 import java.nio.file.Files;
+import java.util.Arrays;
 import java.util.BitSet;
+import java.util.List;
 
 class PainlessLexerImpl extends PainlessLexer {
     // adapted from https://github.com/elastic/elasticsearch/blob/main/modules/lang-painless/src/main/java/org/elasticsearch/painless/antlr/EnhancedPainlessLexer.java#L29
@@ -90,6 +92,21 @@ public class PainlessLinter {
         }
 
         File file = new File(fileArg);
+        
+        if (!file.exists()) {
+            System.out.printf("File %s does not exist ❌%n", file.getPath());
+            System.exit(1);
+        }
+        
+        List<String> allowedExtensions = Arrays.asList(".painless", ".p");
+        
+        String extension = file.getName().substring(file.getName().lastIndexOf('.'));
+        
+        if (!allowedExtensions.contains(extension)) {
+            System.out.printf("File %s is not a painless file. Please provide a file with .painless or .p extension ❌%n", file.getPath());
+            System.exit(1);
+        }
+        
         String input = new String(Files.readAllBytes(file.toPath()));
 
         System.out.printf("Reading file: %s at %s%n", file.getName(), file.getPath());
